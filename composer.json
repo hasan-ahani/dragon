@@ -1,0 +1,16 @@
+{
+    "name": "hasanart/dragon",
+    "description": "wordpress theme dev",
+    "autoload": {
+        "psr-4": {
+            "Hasanart\\Dragon\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hasan Ahani",
+            "email": "67734902+hasan-ahani@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
