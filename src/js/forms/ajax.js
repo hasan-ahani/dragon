@@ -8,10 +8,10 @@ export default function (options, e) {
 
 
     options = $.extend({
-        beforeSend  : function(){},
-        complete    : function(){},
-        success     : function(){},
-        error       : function(){},
+        beforeSend  : () => {},
+        complete    : () => {},
+        success     : () => {},
+        error       : () => {},
         url         : dragon.ajaxUrl,
         type 		: 'GET',
         data 		: {},
