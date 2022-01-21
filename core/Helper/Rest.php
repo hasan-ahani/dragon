@@ -88,18 +88,32 @@ abstract class Rest extends \WP_REST_Request
     /**
      * @param array $args
      * @param bool|string $route
+     * @param bool $public permission
      * @return $this
      */
-    protected function register_route(array $args, bool|string $route = false): static
+    protected function register_route(array $args, bool|string $route = false, $public = false): static
     {
 
         $namespace =  'dragon';
+
+
+        $default = [
+            'methods'               => self::GET,
+            'permission_callback' 	=> $public ? '__return_true' :  array($this, 'permission'),
+        ];
+
+        $args = array_merge($args, $default);
 
         if($this->suffix){
             $namespace .= '/' . $this->suffix;
         }
         register_rest_route($namespace,$this->name . $route, $args);
         return $this;
+    }
+
+    public function permission()
+    {
+        return is_user_logged_in();
     }
 
     /**
