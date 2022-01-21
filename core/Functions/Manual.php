@@ -24,6 +24,13 @@ class Manual
         }
     }
 
+    public function activation()
+    {
+
+        $activation = new \Dragon\Activation();
+        $activation->activate();
+
+    }
 }
 
 

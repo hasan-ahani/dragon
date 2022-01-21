@@ -39,6 +39,9 @@ spl_autoload_register(function ($class) {
     }
 });
 
+$activation = new \Dragon\Activation();
+add_action('after_switch_theme', array($activation, 'switchTheme'));
+
 
 global $dragon;
 $dragon = new \Dragon\Loader();
