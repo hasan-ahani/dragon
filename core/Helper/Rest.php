@@ -48,13 +48,13 @@ abstract class Rest extends \WP_REST_Request
      * rest base route
      * @var string
      */
-    protected string $name = '';
+    protected $name = '';
 
     /**
      * success result array
      * @var array
      */
-    private array $result = [
+    private $result = [
         'success'     => 1,
         'message'     => 'ok',
     ];
@@ -63,7 +63,7 @@ abstract class Rest extends \WP_REST_Request
     /**
      * @var string
      */
-    private string $suffix;
+    private $suffix;
 
     public function __construct($name , $suffix = 'v1')
     {
@@ -91,7 +91,7 @@ abstract class Rest extends \WP_REST_Request
      * @param bool $public permission
      * @return $this
      */
-    protected function register_route(array $args, bool|string $route = false, $public = false): static
+    protected function register_route(array $args, $route = false, $public = false)
     {
 
         $namespace =  'dragon';
@@ -121,7 +121,7 @@ abstract class Rest extends \WP_REST_Request
      * @param array|string|int $data
      * @return \WP_Error
      */
-    protected function access_denied(array|string|int $data = ''): \WP_Error
+    protected function access_denied( $data = ''): \WP_Error
     {
         return new \WP_Error('access_denied', __('Access Denied', DRAGON_I118), $data);
     }
@@ -132,7 +132,7 @@ abstract class Rest extends \WP_REST_Request
      * @param string|int|array|float $value
      * @return $this
      */
-    public function set(string $key ,string|int|array|float $value): static
+    public function set(string $key , $value)
     {
         $this->result[$key] = $value;
         return $this;
@@ -156,7 +156,7 @@ abstract class Rest extends \WP_REST_Request
      * @param string|array|int $data
      * @return \WP_Error
      */
-    public function error(string $code, string $message , string|array|int $data = ''): \WP_Error
+    public function error(string $code, string $message , $data = ''): \WP_Error
     {
         return new \WP_Error($code, $message, $data);
     }

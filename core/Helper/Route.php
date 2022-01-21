@@ -15,7 +15,7 @@ defined('ABSPATH') or exit();
 abstract class Route
 {
 
-    protected string $slug =   '';
+    protected $slug =   '';
 
     /**
      * register route
@@ -54,7 +54,7 @@ abstract class Route
      * @param $vars
      * @return mixed
      */
-    public function queryVars($vars ): mixed
+    public function queryVars($vars )
     {
         $vars[] = $this->slug;
         return $vars;
@@ -65,7 +65,7 @@ abstract class Route
      */
     public function isCurrentRoute(): bool
     {
-        return str_starts_with($_SERVER['REQUEST_URI'], '/' . $this->slug);
+        return strpos( $_SERVER['REQUEST_URI'],  '/' . $this->slug ) === 0;
     }
 
 }

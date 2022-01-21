@@ -14,6 +14,6 @@ defined('ABSPATH') or exit();
 
 class Course extends \Dragon\Helper\PostType
 {
-    protected string $type = 'course';
+    protected $type = 'course';
 
 }
