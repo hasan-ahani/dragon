@@ -1,11 +1,12 @@
 {
   "name": "dragon",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "wordpress theme dev",
   "url": "https://wptool.co/dragon",
   "scripts": {
     "dev": "gulp",
-    "build": "gulp build"
+    "build": "gulp build",
+    "icon": "node icon.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "babel-preset-latest": "^6.24.1",
     "browser-sync": "^2.26.7",
     "del": "^5.1.0",
+    "fontagon": "^1.1.1",
     "gulp": "4.0",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-babel": "^8.0.0",
@@ -51,6 +53,7 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
+    "gulp-wp-pot": "^2.5.0",
     "gulp-zip": "^5.1.0",
     "imagemin-jpeg-recompress": "^6.0.0",
     "vinyl-buffer": "^1.0.1",

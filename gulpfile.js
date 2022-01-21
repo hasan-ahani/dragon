@@ -20,7 +20,7 @@ global.$ = {
     task: [
         './gulp/clean',
         // './gulp/copy',
-        // './gulp/pug',
+        './gulp/lang',
         './gulp/scripts',
         './gulp/serve',
         './gulp/styles',

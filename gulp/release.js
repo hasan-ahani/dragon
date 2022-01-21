@@ -14,7 +14,7 @@ module.exports = function () {
             '!.gitignore',
             '!.gitattributes',
             '!gulpfile.js',
-            '!gulpfile.js',
+            '!icon.js',
             '!webpack.config.js',
             '!composer.json',
             '!composer.lock',

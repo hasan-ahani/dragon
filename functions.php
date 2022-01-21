@@ -29,7 +29,7 @@ if (file_exists(DRAGON_PATH . '/vendor/autoload.php')) require DRAGON_PATH . "ve
  * register autoLoader class
  */
 spl_autoload_register(function ($class) {
-    if( str_starts_with( $class,  'Dragon' )){
+    if( strpos( $class,  'Dragon' ) === 0){
         $class = str_replace( 'Dragon\\', DRAGON_CORE,  $class );
         $class = str_replace( '\\' , '/',  $class );
         $class.= '.php';

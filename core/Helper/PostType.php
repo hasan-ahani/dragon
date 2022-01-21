@@ -20,20 +20,20 @@ abstract class PostType
      * post type
      * @var string
      */
-    protected string $type     = '';
+    protected $type     = '';
 
     /**
      * post type labels
      * @var array
      */
-    protected array $labels   = [];
+    protected $labels   = [];
 
 
     /**
      * post type args
      * @var array
      */
-    protected array $args     = [];
+    protected $args     = [];
 
 
     /**
@@ -58,9 +58,6 @@ abstract class PostType
     public function register_post_type()
     {
 
-        $args = [] ;
-
-
         $defaults = array(
             'public'            => true,
             'hierarchical'      => true,
@@ -76,18 +73,9 @@ abstract class PostType
 
         $plural = ucfirst($this->type) . 's';
         $single = ucfirst($this->type);
-
         $labels = array(
-            'name'                  => _x( $plural, 'post type general name', DRAGON_I118 ),
-            'singular_name'         => _x( $single, 'post type singular name', DRAGON_I118 ),
-            'add_new'               => _x( 'Add New', $single , DRAGON_I118),
-            'add_new_item'          => __( 'Add New ' . $single, DRAGON_I118 ),
-            'edit_item'             => __( 'Edit ' . $single, DRAGON_I118 ),
-            'new_item'              => __( 'New ' . $single, DRAGON_I118 ),
-            'view_item'             => __( 'View ' . $single , DRAGON_I118),
-            'search_items'          => __( 'Search ' . $plural, DRAGON_I118 ),
-            'not_found'             =>  __( 'No ' . $plural . ' found' , DRAGON_I118),
-            'not_found_in_trash'    => __( 'No ' . $plural . ' found in Trash', DRAGON_I118 )
+            'name'                  => $plural,
+            'singular_name'         => $single,
         );
 
         $args['labels'] = array_merge( $labels, $this->labels );

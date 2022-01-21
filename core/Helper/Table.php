@@ -18,59 +18,59 @@ abstract class Table
     /**
      * @var string Table name, without the global table prefix
      */
-    protected string $name = '';
+    protected $name = '';
 
     /**
      * @var string Optional description.
      */
-    protected string $description = '';
+    protected $description = '';
 
     /**
      * @var int Database version
      */
-    protected int $version = 0;
+    protected $version = 0;
 
     /**
      * @var boolean Is this table for a site, or global
      */
-    protected bool $global = false;
+    protected $global = false;
 
 
     /**
      * @var string Database version key (saved in _options or _sitemeta)
      */
-    protected string $db_version_key = '';
+    protected $db_version_key = '';
 
     /**
      * @var string Current database version
      */
-    protected string|int $db_version = 0;
+    protected $db_version = 0;
 
     /**
      * @var string Table name
      */
-    protected string $table_name = '';
+    protected $table_name = '';
 
     /**
      * @var string Table schema
      */
-    protected string $schema = '';
+    protected $schema = '';
 
 
     /**
      * @var string Table upgrade_schema
      */
-    protected string $upgrade_schema = '';
+    protected $upgrade_schema = '';
 
     /**
      * @var string Database character-set & collation for table
      */
-    protected string $charset_collation = '';
+    protected $charset_collation = '';
 
     /**
      * @var $db \wpdb
      */
-    protected bool|\wpdb $db = false;
+    protected $db = false;
 
 
 
@@ -187,7 +187,7 @@ abstract class Table
     private function setup() {
 
         // Setup database
-        $this->db = $GLOBALS['wpdb'] ?? false;
+        $this->db = $GLOBALS['wpdb'] ? $GLOBALS['wpdb'] : false;
 
         // Bail if no WordPress database interface is available
         if ( false === $this->db ) {
@@ -384,7 +384,7 @@ abstract class Table
      * @since 1.3.0
      *
      */
-    private function sanitize_table_name( $name = '' ): bool|string
+    private function sanitize_table_name( $name = '' )
     {
 
         // Only non-accented table names (avoid truncation)
@@ -414,7 +414,7 @@ abstract class Table
     /**
      * @return mixed
      */
-    public function drop(): mixed
+    public function drop()
     {
         //TODO manage drop tables
         return false;

@@ -28,7 +28,7 @@ class Activation
     }
 
 
-    private function getClass(): bool|array
+    private function getClass()
     {
         return glob(DRAGON_CORE . 'Table' . DIRECTORY_SEPARATOR . '*.php');
     }

@@ -15,9 +15,9 @@ defined('ABSPATH') or exit();
 class Landing extends \Dragon\Helper\PostType
 {
 
-    protected string $type = 'landing';
+    protected $type = 'landing';
 
-    protected array $args = [
+    protected $args = [
         'capability_type'   => 'page',
     ];
 
