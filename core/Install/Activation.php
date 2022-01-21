@@ -1,6 +1,6 @@
 <?php
 
-namespace Dragon;
+namespace Dragon\Install;
 use Dragon\Helper\Table;
 
 /**

@@ -39,7 +39,7 @@ spl_autoload_register(function ($class) {
     }
 });
 
-$activation = new \Dragon\Activation();
+$activation = new \Dragon\Install\Activation();
 add_action('after_switch_theme', array($activation, 'switchTheme'));
 
 

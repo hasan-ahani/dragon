@@ -27,7 +27,7 @@ class Manual
     public function activation()
     {
 
-        $activation = new \Dragon\Activation();
+        $activation = new \Dragon\Install\Activation();
         $activation->activate();
 
     }
