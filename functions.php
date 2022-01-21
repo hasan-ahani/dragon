@@ -13,17 +13,15 @@ defined('ABSPATH') or exit();
 /**
  * define dragon const
  */
-define('DRAGON_PATH', get_template_directory());
+define('DRAGON_PATH', get_template_directory() . '/');
 define('DRAGON_URI', get_template_directory_uri());
-define('DRAGON_CORE', DRAGON_PATH . '/core/');
+const DRAGON_CORE = DRAGON_PATH  . 'core' . DIRECTORY_SEPARATOR;
 
 
 /**
  * load composer autoloader
  */
-if (file_exists(DRAGON_PATH . '/vendor/autoload.php')){
-    require DRAGON_PATH . '/vendor/autoload.php';
-}
+if (file_exists(DRAGON_PATH . '/vendor/autoload.php')) require DRAGON_PATH . "vendor/autoload.php";
 
 /**
  * register autoLoader class
