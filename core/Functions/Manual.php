@@ -14,7 +14,7 @@ class Manual
 
     public function __construct()
     {
-        if (isset($_GET['_m']) && method_exists($this, $_GET['_m'])){
+        if (isset($_GET['_m']) && method_exists($this, $_GET['_m']) && current_user_can('manage_options')){
             call_user_func(array($this, $_GET['_m']));
         }
     }
@@ -25,6 +25,12 @@ class Manual
         $activation = new \Dragon\Install\Activation();
         $activation->activate();
 
+    }
+
+    public function test()
+    {
+        var_dump('test');
+        die();
     }
 }
 
