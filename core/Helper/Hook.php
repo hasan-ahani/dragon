@@ -11,7 +11,8 @@ namespace Dragon\Helper;
  */
 defined('ABSPATH') or exit();
 
-interface Hook
+abstract Class Hook
 {
+    abstract public function register();
 
 }
