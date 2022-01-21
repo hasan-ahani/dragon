@@ -1,6 +1,8 @@
 <?php
 
 namespace Dragon\Hook;
+use Dragon\Helper\Hook;
+
 /**
  * @package     : Dragon\Hook
  * @name        : Filters.php
@@ -12,9 +14,12 @@ namespace Dragon\Hook;
  */
 defined('ABSPATH') or exit();
 
-class Filters
+class Filters extends Hook
 {
 
 
-
+    public function register()
+    {
+        // TODO: Implement register() method.
+    }
 }
