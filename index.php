@@ -8,3 +8,12 @@
  * @license     : GPLv2 or later https://wptool.co/license
  */
 defined('ABSPATH') or exit();
+/**
+ * Template header
+ */
+get_header();
+
+/**
+ * Template Footer
+ */
+get_footer();
