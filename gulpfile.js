@@ -25,11 +25,14 @@ global.$ = {
         './gulp/scripts',
         './gulp/serve',
         './gulp/styles',
+        './gulp/release',
         './gulp/watch'
     ],
     gulp: require('gulp'),
     browserSync: require('browser-sync').create(),
     del: require('del'),
+    root: __dirname,
+    pkg,
     headers: {
         style
     }
@@ -39,12 +42,6 @@ global.$ = {
 $.task.forEach(function (taskPath) {
     require(taskPath)();
 });
-
-
-let path = {root: __dirname, src: {}, dest: {}};
-path.src.js     = `${path.root}/src/js`;
-path.src.scss   = `${path.root}/src/scss`;
-path.dest.js    = `${path.root}/assets/js`;
 
 
 
