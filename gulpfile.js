@@ -2,8 +2,7 @@
 
 const pkg = require('./package.json');
 
-let style = `/*!
- * 
+let style = `/*
  * Theme Name: ${capitalize(pkg.name)}
  * Theme URI: ${pkg.url}
  * Author: ${pkg.author}
@@ -25,11 +24,14 @@ global.$ = {
         './gulp/scripts',
         './gulp/serve',
         './gulp/styles',
+        './gulp/release',
         './gulp/watch'
     ],
     gulp: require('gulp'),
     browserSync: require('browser-sync').create(),
     del: require('del'),
+    root: __dirname,
+    pkg,
     headers: {
         style
     }
@@ -41,12 +43,6 @@ $.task.forEach(function (taskPath) {
 });
 
 
-let path = {root: __dirname, src: {}, dest: {}};
-path.src.js     = `${path.root}/src/js`;
-path.src.scss   = `${path.root}/src/scss`;
-path.dest.js    = `${path.root}/assets/js`;
-
-
 
 
 $.gulp.task('dev', $.gulp.series(
@@ -56,6 +52,7 @@ $.gulp.task('dev', $.gulp.series(
         // 'copy:img',
         // 'copy:fonts',
         // 'copy:lib',
+        'styles:theme',
         'styles:dev',
         'styles-rtl:dev',
         'js:dev'

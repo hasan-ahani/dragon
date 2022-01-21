@@ -1,0 +1,21 @@
+/*!
+ * 
+ * Theme Name: Dragon
+ * Theme URI: https://wptool.co/dragon
+ * Author: WP Tool Team
+ * Author URI: https://wptool.co/
+ * Description: wordpress theme dev
+ * Version: 0.0.12
+ * Requires at least: 5.3
+ * Requires PHP: 7.4
+ * License: 
+ * License URI: 
+ * Text Domain: dragon
+ */
+body {
+  direction: ltr; }
+
+h2 {
+  direction: ltr; }
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7O0FBZUE7RUFDRSxjQUFjLEVBQUE7O0FBRWhCO0VBQ0UsY0FBYyxFQUFBIiwiZmlsZSI6ImFwcC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuLy8gQ29uZmlndXJhdGlvblxyXG5AaW1wb3J0IFwiY29uZmlndXJhdGlvbi9mdW5jdGlvbnNcIjtcclxuQGltcG9ydCBcImNvbmZpZ3VyYXRpb24vdmFyaWFibGVzXCI7XHJcbkBpbXBvcnQgXCJjb25maWd1cmF0aW9uL21hcHNcIjtcclxuQGltcG9ydCBcImNvbmZpZ3VyYXRpb24vbWl4aW5zXCI7XHJcbkBpbXBvcnQgXCJjb25maWd1cmF0aW9uL3V0aWxpdGllc1wiO1xyXG5cclxuXHJcbi8vIExheW91dCAmIGNvbXBvbmVudHNcclxuQGltcG9ydCBcImxheW91dC9yb290XCI7XHJcbkBpbXBvcnQgXCJsYXlvdXQvcmVib290XCI7XHJcbkBpbXBvcnQgXCJsYXlvdXQvY29udGFpbmVyc1wiO1xyXG5cclxuXHJcbmJvZHl7XHJcbiAgZGlyZWN0aW9uOiBsdHI7XHJcbn1cclxuaDJ7XHJcbiAgZGlyZWN0aW9uOiBsdHI7XHJcbn1cclxuIl19 */

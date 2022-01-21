@@ -8,12 +8,19 @@ const plumber = require('gulp-plumber'),
     notify = require('gulp-notify'),
     header = require('gulp-header'),
     rtlcss = require('gulp-rtlcss'),
+    fs = require('fs');
     stylesPATH = {
         "input": "./src/sass/",
-        "output": "./"
+        "output": "./assets/css/"
     };
 
 module.exports = function () {
+    $.gulp.task('styles:theme', () => {
+        return $.gulp.src(stylesPATH.input + 'style.css')
+            .pipe(header($.headers.style))
+            .pipe(rename('style.css'))
+            .pipe($.gulp.dest(stylesPATH.output))
+    });
     $.gulp.task('styles:dev', () => {
         return $.gulp.src(stylesPATH.input + 'app.scss')
             .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
@@ -32,13 +39,13 @@ module.exports = function () {
 
     $.gulp.task('styles-rtl:dev', () => {
         return $.gulp.src(stylesPATH.input + 'app.scss')
-            .pipe(rtlcss())
             .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
             .pipe(sourcemaps.init())
             .pipe(scss())
             .pipe(autoprefixer({
                 overrideBrowserslist:  ['last 1 versions']
             }))
+            .pipe(rtlcss())
             .pipe(header($.headers.style))
             .pipe(sourcemaps.write())
             .pipe(rename('style-rtl.css'))

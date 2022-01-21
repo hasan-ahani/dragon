@@ -5,6 +5,7 @@ module.exports = function () {
         //$.gulp.watch('./src/js/lib/*.js', $.gulp.series('copy:lib'));
         //$.gulp.watch('./src/pug/**/*.pug', $.gulp.series('pug'));
         $.gulp.watch('./src/sass/**/*.{sass,scss}', $.gulp.series('styles:dev'));
+        $.gulp.watch('./src/sass/**/*.{sass,scss}', $.gulp.series('styles-rtl:dev'));
         $.gulp.watch('./src/js/**/*.js', $.gulp.series('js:dev'));
     });
 };

@@ -1,6 +1,6 @@
 {
   "name": "dragon",
-  "version": "0.0.1",
+  "version": "0.0.12",
   "description": "wordpress theme dev",
   "url": "https://wptool.co/dragon",
   "scripts": {
@@ -51,6 +51,7 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
+    "gulp-zip": "^5.1.0",
     "imagemin-jpeg-recompress": "^6.0.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
