@@ -11,3 +11,11 @@
 @import "layout/root";
 @import "layout/reboot";
 @import "layout/containers";
+
+
+body{
+  direction: ltr;
+}
+h2{
+  direction: ltr;
+}

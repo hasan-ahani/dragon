@@ -53,6 +53,7 @@ $.gulp.task('dev', $.gulp.series(
         // 'copy:img',
         // 'copy:fonts',
         // 'copy:lib',
+        'styles:theme',
         'styles:dev',
         'styles-rtl:dev',
         'js:dev'
