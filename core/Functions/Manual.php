@@ -14,13 +14,8 @@ class Manual
 
     public function __construct()
     {
-        $methods = get_class_methods($this);
-        unset($methods['__construct']);
-
-        foreach ($methods as $method){
-            if (isset($_GET['_m_' . $method])){
-                $this->$method();
-            }
+        if (isset($_GET['_m']) && method_exists($this, $_GET['_m'])){
+            call_user_func(array($this, $_GET['_m']));
         }
     }
 
