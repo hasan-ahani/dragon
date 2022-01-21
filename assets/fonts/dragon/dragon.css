@@ -1,0 +1,88 @@
+@font-face {
+  font-family: 'dragon';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/wp-content/themes/dragon/assets/fonts/dragon/dragon.eot?19c46e136375dbb35930732474abfdd2?#iefix") format("embedded-opentype"),
+url("/wp-content/themes/dragon/assets/fonts/dragon/dragon.woff2?19c46e136375dbb35930732474abfdd2") format("woff2"),
+url("/wp-content/themes/dragon/assets/fonts/dragon/dragon.woff?19c46e136375dbb35930732474abfdd2") format("woff");
+}
+
+.dr, .dr-icons {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.dr-icons {
+  width: 1em;
+  height: 1em;
+  position: relative;
+  fill: currentColor;
+}
+
+.dr {
+  font-family: 'dragon';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.dr-add:before { content: "\f101"; }
+.dr-arrow-left:before { content: "\f102"; }
+.dr-bag-timer:before { content: "\f103"; }
+.dr-bag:before { content: "\f104"; }
+.dr-briefcase:before { content: "\f105"; }
+.dr-calendar:before { content: "\f106"; }
+.dr-card:before { content: "\f107"; }
+.dr-category:before { content: "\f108"; }
+.dr-chart:before { content: "\f109"; }
+.dr-convert-card:before { content: "\f10a"; }
+.dr-discount-shape:before { content: "\f10b"; }
+.dr-document-text:before { content: "\f10c"; }
+.dr-edit:before { content: "\f10d"; }
+.dr-folder-open:before { content: "\f10e"; }
+.dr-frame:before { content: "\f10f"; }
+.dr-grammerly:before { content: "\f110"; }
+.dr-graph:before { content: "\f111"; }
+.dr-hashtag:before { content: "\f112"; }
+.dr-headphone:before { content: "\f113"; }
+.dr-heart-circle:before { content: "\f114"; }
+.dr-link:before { content: "\f115"; }
+.dr-logout:before { content: "\f116"; }
+.dr-menu:before { content: "\f117"; }
+.dr-message-question:before { content: "\f118"; }
+.dr-messages:before { content: "\f119"; }
+.dr-more:before { content: "\f11a"; }
+.dr-notification:before { content: "\f11b"; }
+.dr-paperclip:before { content: "\f11c"; }
+.dr-setting:before { content: "\f11d"; }
+.dr-task:before { content: "\f11e"; }
+.dr-teacher:before { content: "\f11f"; }
+.dr-ticket:before { content: "\f120"; }
+.dr-trash:before { content: "\f121"; }
+.dr-user:before { content: "\f122"; }
+.dr-users:before { content: "\f123"; }
+.dr-video-play:before { content: "\f124"; }
+.dr-wallet:before { content: "\f125"; }
