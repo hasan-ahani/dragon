@@ -1,4 +1,6 @@
 <?php
+
+namespace Dragon\Helper;
 /**
  * @name        : Hook.php
  * @version     : 1.0
