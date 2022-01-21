@@ -8,3 +8,13 @@
  * @license     : GPLv2 or later https://wptool.co/license
  */
 defined('ABSPATH') or exit();
+
+
+/**
+ * Load Footer.php
+ */
+wp_footer();?>
+
+</body>
+</html>
+
