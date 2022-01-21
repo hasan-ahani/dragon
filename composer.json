@@ -12,5 +12,7 @@
             "email": "67734902+hasan-ahani@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+        "sultann/wp-query-builder": "^1.0"
+    }
 }
