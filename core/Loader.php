@@ -22,6 +22,8 @@ class Loader
      */
     public function run()
     {
+
+
         $this->autorun();
 
 
@@ -83,12 +85,12 @@ class Loader
         foreach ($classes as $file)
         {
 
-            $class = str_replace(DRAGON_CORE . 'Rest/' , '', $file);
-            $array = explode('/', $class);
-            $class = str_replace('/' , '\\', $class);
-            $class = str_replace('.php' , '', $class);
-            $suffix = array_shift($array);
-            $name = str_replace('.php' , '', array_pop($array));
+            $class      = str_replace(DRAGON_CORE . 'Rest/' , '', $file);
+            $array      = explode('/', $class);
+            $class      = str_replace('/' , '\\', $class);
+            $class      = str_replace('.php' , '', $class);
+            $suffix     = array_shift($array);
+            $name       = str_replace('.php' , '', array_pop($array));
 
             $class = 'Dragon\\Rest\\' . $class;
 
