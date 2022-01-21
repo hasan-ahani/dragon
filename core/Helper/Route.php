@@ -23,7 +23,7 @@ abstract class Route
     public function register()
     {
 
-        if ($this->slug){
+        if ($this->getSlug()){
             add_action( 'init', array( $this, 'rewriteRule' ) );
             add_filter( 'query_vars', array( $this, 'queryVars' ) );
         }
@@ -38,14 +38,22 @@ abstract class Route
     }
 
     /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return apply_filters("dragon_route_{$this->slug}", $this->slug);
+    }
+
+    /**
      * register route
      */
     public function rewriteRule()
     {
         add_rewrite_rule(
         #'^' . $this->panelSlug . '/?+',
-            '^' . $this->slug . '/?(([^/]+)/)?+',
-            'index.php?' . $this->slug . '=true',
+            '^' . $this->getSlug() . '/?(([^/]+)/)?+',
+            'index.php?' . $this->getSlug() . '=true',
             'top'
         );
     }
@@ -56,7 +64,7 @@ abstract class Route
      */
     public function queryVars($vars )
     {
-        $vars[] = $this->slug;
+        $vars[] = $this->getSlug();
         return $vars;
     }
 
@@ -65,7 +73,7 @@ abstract class Route
      */
     public function isCurrentRoute(): bool
     {
-        return strpos( $_SERVER['REQUEST_URI'],  '/' . $this->slug ) === 0;
+        return strpos( $_SERVER['REQUEST_URI'],  '/' . $this->getSlug() ) === 0;
     }
 
 }
