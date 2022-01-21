@@ -18,9 +18,27 @@ class Dragon
      */
     public $user;
 
-    public function view()
+    public function view($template, $params = [])
     {
+        /**
+         * Remove php suffix if exists
+         */
+        if( strrpos( $template, '.php' ) + 4 == strlen( $template ) ){
+            $template = substr( $template, 0, strrpos( $template, '.php' ) );
+        }
 
+        $file       =  DRAGON_CORE . 'View/' .  $template . '.php' ;
+
+        if( file_exists( $file ) ) {
+            if (is_array($params) && !empty($params)) {
+                extract($params);
+            }
+            ob_start();
+
+            include($file);
+
+            return ob_get_clean();
+        }
 
     }
 
