@@ -15,6 +15,7 @@ defined('ABSPATH') or exit();
  */
 define('DRAGON_PATH', get_template_directory() . '/');
 define('DRAGON_URI', get_template_directory_uri());
+const DRAGON_I118 = 'dragon';
 const DRAGON_CORE = DRAGON_PATH  . 'core' . DIRECTORY_SEPARATOR;
 
 
@@ -41,4 +42,4 @@ spl_autoload_register(function ($class) {
 
 global $dragon;
 $dragon = new \Dragon\Loader();
-$dragon->load();
+$dragon->run();
