@@ -2,8 +2,7 @@
 
 const pkg = require('./package.json');
 
-let style = `/*!
- * 
+let style = `/*
  * Theme Name: ${capitalize(pkg.name)}
  * Theme URI: ${pkg.url}
  * Author: ${pkg.author}
