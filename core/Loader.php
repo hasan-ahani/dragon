@@ -2,6 +2,7 @@
 
 namespace Dragon;
 use Dragon\Helper\Rest;
+use Dragon\Init\Dragon;
 
 /**
  * @package     : Dragon
@@ -14,7 +15,7 @@ use Dragon\Helper\Rest;
  */
 defined('ABSPATH') or exit();
 
-class Loader
+class Loader extends Dragon
 {
 
     /**
@@ -47,6 +48,7 @@ class Loader
         $autorun = [
             'Route',
             'PostType',
+            'Hook',
         ];
 
         foreach (glob(DRAGON_CORE . "Functions/*.php") as $filename)
@@ -66,7 +68,10 @@ class Loader
                  * @var $object
                  */
                 $object = new $class;
-                $object->register();
+
+                if (method_exists($class, 'register')){
+                    $object->register();
+                }
             }
         }
 
