@@ -15,8 +15,6 @@ defined('ABSPATH') or exit();
 class Auth extends \Dragon\Helper\Rest
 {
 
-    protected string $route_base = 'auth';
-
     /**
      * @inheritDoc
      */

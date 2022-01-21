@@ -65,10 +65,14 @@ abstract class Rest extends \WP_REST_Request
      */
     private string $suffix;
 
-    public function __construct($suffix = 'v1')
+    public function __construct($name , $suffix = 'v1')
     {
         if ($suffix){
             $this->suffix = $suffix;
+        }
+
+        if (!$this->name && $name){
+            $this->name = $name;
         }
 
         parent::__construct();
@@ -94,7 +98,7 @@ abstract class Rest extends \WP_REST_Request
         if($this->suffix){
             $namespace .= '/' . $this->suffix;
         }
-        register_rest_route($namespace,$this->route_base . $route, $args);
+        register_rest_route($namespace,$this->name . $route, $args);
         return $this;
     }
 

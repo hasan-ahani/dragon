@@ -82,18 +82,20 @@ class Loader
 
         foreach ($classes as $file)
         {
+
             $class = str_replace(DRAGON_CORE . 'Rest/' , '', $file);
             $array = explode('/', $class);
             $class = str_replace('/' , '\\', $class);
             $class = str_replace('.php' , '', $class);
             $suffix = array_shift($array);
+            $name = str_replace('.php' , '', array_pop($array));
 
             $class = 'Dragon\\Rest\\' . $class;
 
             /**
              * @var Rest $object
              */
-            $object = new $class(strtolower($suffix));
+            $object = new $class(strtolower($name), strtolower($suffix));
             $object->register();
         }
     }
