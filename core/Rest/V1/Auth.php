@@ -22,10 +22,18 @@ class Auth extends \Dragon\Helper\Rest
     {
         $this->register_route(
             [
-                'methods'               => parent::GET,
-                'callback'              => array( $this, 'index' ),
-                'permission_callback' 	=> '__return_true',
-            ]
+                [
+                    'methods'               => parent::GET,
+                    'callback'              => array( $this, 'index' )
+                ],
+                [
+                    'methods'               => parent::POST,
+                    'callback'              => array( $this, 'index' ),
+                    'public'    => false
+                ],
+            ],
+            false,
+            true
         );
     }
 
