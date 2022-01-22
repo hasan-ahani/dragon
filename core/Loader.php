@@ -53,7 +53,7 @@ class Loader extends Dragon
 
         foreach (glob(DRAGON_CORE . "Functions/*.php") as $filename)
         {
-            include $filename;
+            require_once $filename;
         }
 
         foreach ($autorun as $item){
