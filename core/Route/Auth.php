@@ -20,7 +20,32 @@ class Auth extends \Dragon\Helper\Route
     public function template($template)
     {
         global $dragon;
+
         echo $dragon->view('Page/auth');
+    }
+
+    public function redirect()
+    {
+        global $dragon;
+        $redirect = $dragon->getRedirect();
+
+        if (is_user_logged_in()){
+
+
+            if (isset($_GET['logout'])){
+                $redirect = home_url();
+            }
+
+
+            wp_redirect( $redirect );
+            exit;
+
+        }
+    }
+
+    public function title()
+    {
+        return __('Login Page', DRAGON_I118);
     }
 
 }
