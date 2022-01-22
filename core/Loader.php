@@ -46,7 +46,7 @@ class Loader extends Dragon
     {
 
         $autorun = [
-            'Route',
+            'Routes',
             'PostType',
             'Hook',
         ];

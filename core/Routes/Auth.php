@@ -1,6 +1,6 @@
 <?php
 
-namespace Dragon\Route;
+namespace Dragon\Routes;
 /**
  * @package     : Dragon\Route
  * @name        : Auth.php
@@ -24,7 +24,7 @@ class Auth extends \Dragon\Helper\Route
         echo $dragon->view('Page/auth');
     }
 
-    public function redirect()
+    public function redirects()
     {
         global $dragon;
         $redirect = $dragon->getRedirect();
@@ -46,6 +46,18 @@ class Auth extends \Dragon\Helper\Route
     public function title()
     {
         return __('Login Page', DRAGON_I118);
+    }
+
+    public function enqueue()
+    {
+        global $dragon;
+        wp_register_script('dragon-auth', DRAGON_ASSETS. 'modules/dragon/js/auth.js', array(), $dragon->isDev() ? time() : $dragon->getVersion(), true);
+        wp_register_script('dragon-auth-vendors', DRAGON_ASSETS. 'modules/dragon/js/chunk-vendors.js', array('dragon-auth'), $dragon->isDev() ? time() : $dragon->getVersion(), true);
+        wp_register_style('dragon-auth-vendors', DRAGON_ASSETS. 'modules/dragon/css/chunk-vendors.css', array('dragon'), $dragon->isDev() ? time() : $dragon->getVersion());
+
+        wp_enqueue_script('dragon-auth');
+        wp_enqueue_script('dragon-auth-vendors');
+        wp_enqueue_style('dragon-auth-vendors');
     }
 
 }
