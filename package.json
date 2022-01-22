@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "gulp",
     "build": "gulp build",
-    "icon": "node icon.js"
+    "icon": "node icon.js",
+    "panel-serve": "vue-cli-service serve",
+    "panel-build": "vue-cli-service build",
+    "panel-lint": "vue-cli-service lint"
   },
   "repository": {
     "type": "git",
@@ -19,6 +22,15 @@
   },
   "homepage": "https://wptool.co/",
   "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "sass-loader": "^8.0.2",
+    "node-sass": "^4.12.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11",
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "@rollup/plugin-babel": "^5.3.0",
@@ -58,12 +70,35 @@
     "imagemin-jpeg-recompress": "^6.0.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
-    "webpack": "^5.66.0",
+    "webpack": "^4.45.0",
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
+    "core-js": "^3.6.5",
     "gulp-front-matter": "^1.3.0",
     "gulp-notify": "^4.0.0",
-    "jquery": "^3.6.0"
-  }
+    "jquery": "^3.6.0",
+    "vue": "^2.6.11",
+    "vue-router": "^3.5.3",
+    "vue-toastification": "^1.7.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }
