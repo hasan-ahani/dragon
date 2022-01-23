@@ -1,5 +1,5 @@
 <?php
-namespace Dragon\Init;
+namespace Dragon;
 /**
  * @name        : Dragon.php
  * @version     : 1.0

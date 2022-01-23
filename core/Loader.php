@@ -2,7 +2,6 @@
 
 namespace Dragon;
 use Dragon\Helper\Rest;
-use Dragon\Init\Dragon;
 
 /**
  * @package     : Dragon
@@ -49,6 +48,7 @@ class Loader extends Dragon
             'Routes',
             'PostType',
             'Hook',
+            'MetaBox',
         ];
 
         foreach (glob(DRAGON_CORE . "Functions/*.php") as $filename)
