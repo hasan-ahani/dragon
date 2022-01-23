@@ -2,7 +2,6 @@
 
 namespace Dragon;
 use Dragon\Helper\Rest;
-use Dragon\Init\Dragon;
 
 /**
  * @package     : Dragon
@@ -46,14 +45,15 @@ class Loader extends Dragon
     {
 
         $autorun = [
-            'Route',
+            'Routes',
             'PostType',
             'Hook',
+            'MetaBox',
         ];
 
         foreach (glob(DRAGON_CORE . "Functions/*.php") as $filename)
         {
-            include $filename;
+            require_once $filename;
         }
 
         foreach ($autorun as $item){

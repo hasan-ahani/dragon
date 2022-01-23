@@ -1,5 +1,5 @@
 <?php
-namespace Dragon\Init;
+namespace Dragon;
 /**
  * @name        : Dragon.php
  * @version     : 1.0
@@ -75,5 +75,33 @@ class Dragon
     public function isDev()
     {
         return defined('WP_DEBUG') && WP_DEBUG;
+    }
+
+    public function getRedirect()
+    {
+        $redirect_url  = isset( $_GET['redirect'] ) ? trim( sanitize_text_field( $_GET['redirect'] ) ) : '';
+        $redirect = home_url( );
+
+        if( $redirect_url ){
+
+            if( strpos( $redirect_url, '/' ) === 0 ){//Example: /xd
+                $redirect = home_url( $redirect_url );
+            }elseif(
+                strpos( $redirect_url, 'http' ) === 0
+                ||
+                strpos( $redirect_url, 'https' ) === 0
+            ){
+                $parsed = parse_url( $redirect_url );
+                $path   = $parsed['path'];
+                $q      = isset( $parsed['query'] ) ? $parsed['query'] : '';
+                if( $q ){
+                    $path.= $q;
+                }
+                $redirect = home_url( $path );
+            }
+
+        }
+
+        return $redirect;
     }
 }

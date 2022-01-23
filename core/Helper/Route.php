@@ -35,6 +35,18 @@ abstract class Route
         if (method_exists($this, 'redirect') && $this->isCurrentRoute() ){
             add_action( 'template_redirect', array( $this, 'redirect' ), 99 );
         }
+
+        if (method_exists($this, 'title') && $this->isCurrentRoute() ){
+            add_filter( 'wp_title', array( $this, 'title' ), 99 );
+        }
+
+        if (method_exists($this, 'enqueue') && $this->isCurrentRoute() ){
+            add_action( 'wp_enqueue_scripts', array($this , 'enqueue'), 99 );
+        }
+
+        if (method_exists($this, 'init') && $this->isCurrentRoute() ){
+            $this->init();
+        }
     }
 
     /**
@@ -51,7 +63,6 @@ abstract class Route
     public function rewriteRule()
     {
         add_rewrite_rule(
-        #'^' . $this->panelSlug . '/?+',
             '^' . $this->getSlug() . '/?(([^/]+)/)?+',
             'index.php?' . $this->getSlug() . '=true',
             'top'

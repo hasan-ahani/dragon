@@ -102,7 +102,23 @@ abstract class Rest extends \WP_REST_Request
             'permission_callback' 	=> $public ? '__return_true' :  array($this, 'permission'),
         ];
 
-        $args = array_merge($args, $default);
+        if (!isset($args['callback']) && count($args) > 1){
+
+
+
+            $args = array_map(function ($route) use ($public) {
+
+                $public = isset($route['public']) ? boolval($route['public']) : $public;
+                $default = [
+                    'methods'               => self::GET,
+                    'permission_callback' 	=> $public ? '__return_true' :  array($this, 'permission'),
+                ];
+                return array_merge($default , $route);
+            },$args);
+        }else{
+
+            $args = array_merge($default , $args);
+        }
 
         if($this->suffix){
             $namespace .= '/' . $this->suffix;

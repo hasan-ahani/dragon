@@ -80,3 +80,4 @@ package-lock.json
 composer.lock
 release
 vendor
+assets/modules/dragon/*.html
