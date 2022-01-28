@@ -17,7 +17,7 @@ class Enqueue extends \Dragon\Helper\Hook
 
     public function register()
     {
-        add_action( 'wp_enqueue_scripts', array($this , 'public_enqueue') );
+        add_action( 'wp_enqueue_scripts', array($this , 'public_enqueue'),99, 1 );
     }
 
     public function public_enqueue()
@@ -27,20 +27,20 @@ class Enqueue extends \Dragon\Helper\Hook
             'dragon',
             $dragon->css( 'style'),
             array(),
-            $dragon->isDev() ? time() : dragon()->getVersion());
+            $dragon->isDev() ? time() : $dragon->getVersion());
 
         wp_register_style(
             'dragon-rtl',
             $dragon->css( 'style-rtl'),
             array(),
-            $dragon->isDev() ? time() : dragon()->getVersion());
+            $dragon->isDev() ? time() : $dragon->getVersion());
 
 
         wp_register_script(
             'dragon',
             $dragon->js( 'main'),
             array(),
-            $dragon->isDev() ? time() : dragon()->getVersion(), true);
+            $dragon->isDev() ? time() : $dragon->getVersion(), true);
 
 
         wp_enqueue_style( is_rtl() ? 'dragon-rtl' : 'dragon' );
