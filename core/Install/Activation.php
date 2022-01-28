@@ -21,7 +21,7 @@ class Activation
     public function switchTheme($old_theme_name, $old_theme)
     {
         if ($old_theme_name == 'dragon'){
-            $this->deactivate();
+            //$this->deactivate();
         }else{
             $this->activate();
         }
