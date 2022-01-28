@@ -13,6 +13,7 @@
         }
     ],
     "require": {
-        "sultann/wp-query-builder": "^1.0"
+        "sultann/wp-query-builder": "^1.0",
+        "eleirbag89/telegrambotphp": "^1.3"
     }
 }
