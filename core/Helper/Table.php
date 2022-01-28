@@ -204,7 +204,7 @@ abstract class Table
 
         // Maybe create database key
         if ( empty( $this->db_version_key ) ) {
-            $this->db_version_key = "wptool_table_{$this->name}_version";
+            $this->db_version_key = "dragon_table_{$this->name}_version";
         }
     }
 
@@ -260,7 +260,7 @@ abstract class Table
         // Update the DB version
         $this->is_global()
             ? update_network_option( null, $this->db_version_key, $this->version )
-            :         update_option(       $this->db_version_key, $this->version );
+            :         update_option(       $this->db_version_key, $this->version, false );
     }
 
     /**
@@ -286,7 +286,7 @@ abstract class Table
      *
      * @return bool
      */
-    private function is_testing(): bool
+    private function is_testing()
     {
         return (bool)
 
@@ -302,11 +302,11 @@ abstract class Table
      *
      * @since 1.1.0
      */
-    private function create(): bool
+    private function create()
     {
 
         // Run CREATE TABLE query
-        $query   = "CREATE TABLE {$this->table_name} ( {$this->schema} ) {$this->charset_collation};";
+        $query   = "CREATE TABLE IF NOT EXISTS {$this->table_name} ( {$this->schema} ) {$this->charset_collation};";
         $created = dbDelta( array( $query ) );
 
         if (! empty( $created )){
@@ -320,7 +320,7 @@ abstract class Table
     /**
      * @return mixed
      */
-    private function upgrade(): mixed
+    private function upgrade()
     {
         if ($this->upgrade_schema){
 
@@ -343,7 +343,7 @@ abstract class Table
      *
      * @return bool
      */
-    private function exists(): bool
+    private function exists()
     {
         $query       = "SHOW TABLES LIKE %s";
         $like        = $this->db->esc_like( $this->table_name );
@@ -361,7 +361,7 @@ abstract class Table
      *
      * @return bool
      */
-    private function is_global(): bool
+    private function is_global()
     {
 
         // Is the table global?
