@@ -51,6 +51,12 @@ abstract class Rest extends \WP_REST_Request
     protected $name = '';
 
     /**
+     * rest base route
+     * @var string
+     */
+    protected $namespace = 'dragon';
+
+    /**
      * success result array
      * @var array
      */
@@ -94,8 +100,9 @@ abstract class Rest extends \WP_REST_Request
     protected function register_route(array $args, $route = false, $public = false)
     {
 
-        $namespace =  'dragon';
-
+        if (is_string($route) && strpos( $route, '/') !== 0){
+            $route = '/' . $route;
+        }
 
         $default = [
             'methods'               => self::GET,
@@ -120,11 +127,39 @@ abstract class Rest extends \WP_REST_Request
             $args = array_merge($default , $args);
         }
 
+        $namespace = $this->namespace;
+
         if($this->suffix){
             $namespace .= '/' . $this->suffix;
         }
+
         register_rest_route($namespace,$this->name . $route, $args);
         return $this;
+    }
+
+    /**
+     * make route array
+     * @param string $methods
+     * @param $callback
+     * @param false $permission_or_public
+     * @return array
+     */
+    public function route($callback , $methods = self::GET, $permission_or_public = false)
+    {
+
+        $arr = [
+            'methods'   => $methods,
+            'callback'   => $callback,
+        ];
+
+        if (is_array($permission_or_public)){
+            $arr['permission_callback'] = $permission_or_public;
+        }else{
+            $arr['public'] = $permission_or_public;
+        }
+
+        return $arr;
+
     }
 
     public function permission()
@@ -175,5 +210,34 @@ abstract class Rest extends \WP_REST_Request
     public function error(string $code, string $message , $data = ''): \WP_Error
     {
         return new \WP_Error($code, $message, $data);
+    }
+
+    /**
+     * @param false $route
+     * @return string
+     */
+    public function getUrl($route = false)
+    {
+        $namespace = $this->namespace;
+
+        if($this->suffix){
+            $namespace .= '/' . $this->suffix;
+        }
+
+        $namespace .= '/' . $this->name;
+        if ($route){
+
+            $namespace .= '/' . $route;
+        }
+        return get_rest_url(null, $namespace );
+    }
+
+    /**
+     * @param $cap
+     * @return bool
+     */
+    public function canAccess($cap)
+    {
+        return is_user_logged_in() && current_user_can($cap);
     }
 }
