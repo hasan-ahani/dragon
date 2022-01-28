@@ -41,7 +41,7 @@ spl_autoload_register(function ($class) {
 });
 
 $activation = new \Dragon\Install\Activation();
-add_action('after_switch_theme', array($activation, 'switchTheme'));
+add_action('after_switch_theme', array($activation, 'switchTheme'), 99, 2);
 
 
 global $dragon;
