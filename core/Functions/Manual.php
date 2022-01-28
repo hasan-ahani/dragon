@@ -25,6 +25,8 @@ class Manual
         $activation = new \Dragon\Install\Activation();
         $activation->activate();
 
+        die('tset');
+
     }
 
     public function test()
