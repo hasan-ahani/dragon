@@ -1,5 +1,7 @@
 <?php
 namespace Dragon;
+use PluginEver\QueryBuilder\Query;
+
 /**
  * @name        : Dragon.php
  * @version     : 1.0
@@ -12,6 +14,11 @@ defined('ABSPATH') or exit();
 
 class Dragon
 {
+
+    public function query()
+    {
+        return Query::init();
+    }
 
     /**
      * @var \Dragon\Model\User
