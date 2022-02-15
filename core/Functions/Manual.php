@@ -25,7 +25,7 @@ class Manual
         $activation = new \Dragon\Install\Activation();
         $activation->activate();
 
-        die('tset');
+        die('finish');
 
     }
 

@@ -17,7 +17,7 @@ class Auth extends \Dragon\Helper\Route
 
     protected $slug = 'auth';
 
-    public function template($template)
+    public function template()
     {
         global $dragon;
 

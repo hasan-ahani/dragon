@@ -17,36 +17,51 @@ abstract class Route
 
     protected $slug =   '';
 
+    protected $front = true;
+
+    protected $parent =   '';
+
+
+
     /**
      * register route
      */
     public function register()
     {
 
-        if ($this->getSlug()){
-            add_action( 'init', array( $this, 'rewriteRule' ) );
-            add_filter( 'query_vars', array( $this, 'queryVars' ) );
+        if ($this->front){
+            if ($this->getSlug()){
+                add_action( 'init', array( $this, 'rewriteRule' ) );
+                add_filter( 'query_vars', array( $this, 'queryVars' ) );
+            }
+
+            if (method_exists($this, 'template') && $this->isCurrentRoute() ){
+                add_filter( 'template_include', array( $this, 'template' ), 99 );
+            }
+
+            if (method_exists($this, 'redirect') && $this->isCurrentRoute() ){
+                add_action( 'template_redirect', array( $this, 'redirect' ), 99 );
+            }
+
+            if (method_exists($this, 'title') && $this->isCurrentRoute() ){
+                add_filter( 'wp_title', array( $this, 'title' ), 99 );
+            }
+
+            if (method_exists($this, 'enqueue') && $this->isCurrentRoute() ){
+                add_action( 'wp_enqueue_scripts', array($this , 'enqueue'), 99 );
+            }
+
+            if (method_exists($this, 'init') && $this->isCurrentRoute() ){
+                $this->init();
+            }
+        }else{
+            add_action( 'admin_menu', [$this , 'admin_page'] );
+
+            if (method_exists($this, 'enqueue') && $this->isCurrentRoute() ){
+                add_action( 'admin_enqueue_scripts', array($this , 'enqueue'), 99 );
+            }
         }
 
-        if (method_exists($this, 'template') && $this->isCurrentRoute() ){
-            add_filter( 'template_include', array( $this, 'template' ), 99 );
-        }
-
-        if (method_exists($this, 'redirect') && $this->isCurrentRoute() ){
-            add_action( 'template_redirect', array( $this, 'redirect' ), 99 );
-        }
-
-        if (method_exists($this, 'title') && $this->isCurrentRoute() ){
-            add_filter( 'wp_title', array( $this, 'title' ), 99 );
-        }
-
-        if (method_exists($this, 'enqueue') && $this->isCurrentRoute() ){
-            add_action( 'wp_enqueue_scripts', array($this , 'enqueue'), 99 );
-        }
-
-        if (method_exists($this, 'init') && $this->isCurrentRoute() ){
-            $this->init();
-        }
     }
 
     /**
@@ -55,6 +70,19 @@ abstract class Route
     public function getSlug()
     {
         return apply_filters("dragon_route_{$this->slug}", $this->slug);
+    }
+
+    public function admin_page()
+    {
+        add_submenu_page(
+            $this->parent,
+            $this->title(),
+            'manage_options',
+            'custom.php',
+            $this->slug,
+            $this->template(),
+            90 );
+
     }
 
     /**
@@ -85,6 +113,14 @@ abstract class Route
     public function isCurrentRoute(): bool
     {
         return strpos( $_SERVER['REQUEST_URI'],  '/' . $this->getSlug() ) === 0;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCurrentAdminRoute(): bool
+    {
+        return strpos( $_SERVER['REQUEST_URI'],  '/wp-admin/page.php?page=' . $this->getSlug() ) === 0;
     }
 
 }

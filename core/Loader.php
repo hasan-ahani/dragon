@@ -34,6 +34,13 @@ class Loader extends Dragon
             $this->restInit();
         } );
 
+        if (is_user_logged_in()){
+            $this->user = dg_get_user();
+        }
+
+
+        do_action( 'dragon_loaded' );
+
     }
 
 
@@ -50,6 +57,10 @@ class Loader extends Dragon
             'Hook',
             'MetaBox',
         ];
+
+        if ( defined('WP_CLI') && WP_CLI ){
+            $autorun[] = 'Cli';
+        }
 
         foreach (glob(DRAGON_CORE . "Functions/*.php") as $filename)
         {

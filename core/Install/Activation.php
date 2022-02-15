@@ -27,11 +27,29 @@ class Activation
         }
     }
 
-
-    private function getClass()
+    /**
+     * @return object
+     */
+    public function tables()
     {
-        return glob(DRAGON_CORE . 'Table' . DIRECTORY_SEPARATOR . '*.php');
+        global $wpdb;
+        $prefix = $wpdb->prefix;
+
+        $arr = [
+            'user_data'     => "{$prefix}user_data",
+            'post_data'     => "{$prefix}post_data",
+            'ticket'        => "{$prefix}ticket",
+            'notification'  => "{$prefix}notification",
+            'email_queue'   => "{$prefix}email_queue",
+            'order'         => "{$prefix}order",
+            'transaction'   => "{$prefix}transaction",
+            'shopping_cart' => "{$prefix}shopping_cart",
+        ];
+
+        return (object) $arr;
     }
+
+
 
 
     /**
@@ -42,19 +60,42 @@ class Activation
         if ( ! function_exists( 'dbDelta' ) ) {
             require_once ABSPATH . 'wp-admin/includes/upgrade.php';
         }
+        $tables = $this->tables();
 
-        foreach ($this->getClass() as $file)
-        {
+        $collate = 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
 
-            $class = 'Dragon\\Table\\' . basename($file, '.php');
+        $schemas = [
+            "
+            CREATE TABLE IF NOT EXISTS `{$tables->user_data}` (
+             `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+             `user_id` bigint(20) unsigned NOT NULL,
+             `uid` varchar (10) COLLATE utf8mb4_unicode_ci NOT NULL,
+             `first_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+             `last_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+             `phone` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+             `gander` tinyint(1) DEFAULT NULL ,
+             `birthday` date DEFAULT NULL,
+             `login_count` mediumint(8) unsigned NOT NULL,
+             `last_login` datetime NOT NULL,
+             `wallet` int(10) NOT NULL DEFAULT 0,
+             `payment_count` smallint(5) unsigned NOT NULL DEFAULT 0 COMMENT 'Total Payment Count',
+             `payment_amount` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'Total Purchased amount',
+             `avatar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+             `email_verify` tinyint(1) DEFAULT 0,
+             `phone_verify` tinyint(1) DEFAULT 0,
+             `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+             `updated_at` datetime NOT NULL,
+             PRIMARY KEY (`ID`),
+             KEY `user_id` (`user_id`),
+             KEY `phone` (`phone`),
+             UNIQUE (user_id)
+            ) $collate "
+        ];
 
-            /**
-             * @var Table $object
-             */
-            $object = new $class;
-            $object->maybe_upgrade();
+
+        foreach ($schemas as $schema){
+            dbDelta($schema);
         }
-
 
         /**
          * dragon activate hook
@@ -70,16 +111,16 @@ class Activation
      */
     public function deactivate()
     {
-        foreach ($this->getClass() as $file)
-        {
+        global $wpdb;
+        $tables = $this->tables();
 
-            $class = 'Dragon\\Table\\' . basename($file, '.php');
+        if ($tables){
+            foreach ($tables as $table){
 
-            /**
-             * @var Table $object
-             */
-            $object = new $class;
-            $object->drop();
+                $sql = "DROP TABLE IF EXISTS $table";
+                $wpdb->query($sql);
+
+            }
         }
 
 

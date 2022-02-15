@@ -7,7 +7,8 @@ module.exports = {
             entry: './src/app/auth/main.js',
             template: 'public/index.html',
             title: 'Auth User',
-            chunks: [ 'chunk-vendors-auth', 'chunk-common-auth', 'auth'],
+            excludeChunks: ['chunk-vendors', 'chunk-common'],
+            chunks: ['auth'],
         },
         'panel': {
             entry: './src/app/user/main.js',

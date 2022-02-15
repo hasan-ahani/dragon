@@ -1,6 +1,8 @@
 <?php
 
 namespace Dragon\Rest\V1;
+use Dragon\Model\Post;
+
 /**
  * @package     : Dragon\Rest\V1
  * @name        : Auth.php
@@ -42,6 +44,9 @@ class Auth extends \Dragon\Helper\Rest
      */
     public function index(): array
     {
+
+
+
 
         return $this->response();
     }

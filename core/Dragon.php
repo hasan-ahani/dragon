@@ -1,5 +1,6 @@
 <?php
 namespace Dragon;
+use Dragon\Model\User;
 use PluginEver\QueryBuilder\Query;
 
 /**
@@ -15,15 +16,18 @@ defined('ABSPATH') or exit();
 class Dragon
 {
 
+
+    /**
+     * @var bool|User
+     */
+    public $user = false;
+
+
     public function query()
     {
         return Query::init();
     }
 
-    /**
-     * @var \Dragon\Model\User
-     */
-    public $user;
 
     public function view($template, $params = [])
     {
@@ -48,6 +52,7 @@ class Dragon
         }
 
     }
+
 
     /**
      * @param $name

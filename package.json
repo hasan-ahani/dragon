@@ -79,6 +79,7 @@
     "gulp-notify": "^4.0.0",
     "jquery": "^3.6.0",
     "vue": "^2.6.11",
+    "vue-persian-datetime-picker": "^2.10.3",
     "vue-router": "^3.5.3",
     "vue-toastification": "^1.7.11"
   },

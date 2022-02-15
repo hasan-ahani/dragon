@@ -19,7 +19,7 @@ class Panel extends Route
 
     protected $slug = 'panel';
 
-    public function template($template)
+    public function template()
     {
         global $dragon;
 

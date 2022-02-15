@@ -15,5 +15,8 @@
     "require": {
         "sultann/wp-query-builder": "^1.0",
         "eleirbag89/telegrambotphp": "^1.3"
-    }
+    },
+    "repositories": [
+        {"type": "composer", "url": "https://codestar.repo.repman.io"}
+    ]
 }
