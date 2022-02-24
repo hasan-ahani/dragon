@@ -3,20 +3,25 @@ const path = require("path");
 
 module.exports = {
     pages: {
-        'auth': {
+        index: {
+            entry: './src/app/system/main.js',
+            template: 'public/index.html',
+            title: 'Design System',
+            chunks: [ 'chunk-vendors', 'chunk-common', 'system'],
+        },
+        auth: {
             entry: './src/app/auth/main.js',
             template: 'public/index.html',
             title: 'Auth User',
-            excludeChunks: ['chunk-vendors', 'chunk-common'],
-            chunks: ['auth'],
+            chunks: [ 'chunk-vendors', 'chunk-common', 'auth'],
         },
-        'panel': {
-            entry: './src/app/user/main.js',
+        dashboard: {
+            entry: './src/app/dashboard/main.js',
             template: 'public/index.html',
-            title: 'User Panel',
-            chunks: [ 'chunk-vendors', 'chunk-common', 'panel'],
+            title: 'User Dashboard Panel',
+            chunks: [ 'chunk-vendors', 'chunk-common', 'dashboard'],
         },
-        'admin': {
+        admin: {
             entry: './src/app/admin/main.js',
             template: 'public/index.html',
             title: 'Admin Panel',

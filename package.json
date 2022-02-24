@@ -4,12 +4,10 @@
   "description": "wordpress theme dev",
   "url": "https://wptool.co/dragon",
   "scripts": {
-    "dev": "gulp",
-    "build": "gulp build",
     "icon": "node icon.js",
-    "panel-serve": "vue-cli-service serve",
-    "panel-build": "vue-cli-service build",
-    "panel-lint": "vue-cli-service lint"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
   "repository": {
     "type": "git",
