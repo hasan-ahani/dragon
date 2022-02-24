@@ -15,10 +15,22 @@ defined('ABSPATH') or exit();
 abstract class Route
 {
 
+    /**
+     * slug path page
+     * @var string
+     */
     protected $slug =   '';
 
+    /**
+     * in front
+     * @var bool
+     */
     protected $front = true;
 
+    /**
+     * parent menu admin
+     * @var string
+     */
     protected $parent =   '';
 
 
@@ -57,7 +69,7 @@ abstract class Route
         }else{
             add_action( 'admin_menu', [$this , 'admin_page'] );
 
-            if (method_exists($this, 'enqueue') && $this->isCurrentRoute() ){
+            if (method_exists($this, 'enqueue') && $this->isCurrentAdminRoute() ){
                 add_action( 'admin_enqueue_scripts', array($this , 'enqueue'), 99 );
             }
         }
@@ -69,6 +81,8 @@ abstract class Route
      */
     public function getSlug()
     {
+        if (!$this->slug) return false;
+
         return apply_filters("dragon_route_{$this->slug}", $this->slug);
     }
 
@@ -77,10 +91,10 @@ abstract class Route
         add_submenu_page(
             $this->parent,
             $this->title(),
+            $this->title(),
             'manage_options',
-            'custom.php',
             $this->slug,
-            $this->template(),
+            [$this, 'template'],
             90 );
 
     }
@@ -120,7 +134,17 @@ abstract class Route
      */
     public function isCurrentAdminRoute(): bool
     {
-        return strpos( $_SERVER['REQUEST_URI'],  '/wp-admin/page.php?page=' . $this->getSlug() ) === 0;
+        return strpos( $_SERVER['REQUEST_URI'],  '/wp-admin' ) === 0 &&
+                isset($_GET['page']) && $_GET['page'] == $this->getSlug();
+    }
+
+    public function emptyFrontTemplate($content = '')
+    {
+        get_header();
+
+        echo $content;
+
+        get_footer();
     }
 
 }
