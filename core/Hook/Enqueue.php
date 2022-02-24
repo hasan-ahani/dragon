@@ -17,7 +17,7 @@ class Enqueue extends \Dragon\Helper\Hook
 
     public function register()
     {
-        add_action( 'wp_enqueue_scripts', array($this , 'public_enqueue'),99, 1 );
+        $this->action('wp_enqueue_scripts', 'public_enqueue',99 );
     }
 
     public function public_enqueue()

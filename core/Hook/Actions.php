@@ -19,8 +19,8 @@ class Actions extends Hook
 
     public function register()
     {
-        add_action('after_setup_theme', array($this, 'load_theme_language'));
-        add_action('after_setup_theme', array($this, 'theme_support_feature'));
+        $this->action('after_setup_theme', 'load_theme_language' );
+        $this->action('after_setup_theme', 'theme_support_feature' );
     }
 
 
