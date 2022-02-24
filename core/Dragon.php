@@ -77,7 +77,7 @@ class Dragon
      */
     public function getVersion()
     {
-        return wp_get_theme()->get('Version');
+        return dragon()->isDev() ? time() : wp_get_theme()->get('Version');
     }
 
     /**
@@ -86,7 +86,7 @@ class Dragon
      */
     public function isDev()
     {
-        return defined('WP_DEBUG') && WP_DEBUG;
+        return defined('DRAGON_DEBUG') && DRAGON_DEBUG;
     }
 
     public function getRedirect()
