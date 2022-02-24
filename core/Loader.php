@@ -1,6 +1,7 @@
 <?php
 
 namespace Dragon;
+use Dragon\Helper\Hook;
 use Dragon\Helper\Rest;
 
 /**
@@ -74,6 +75,7 @@ class Loader extends Dragon
             {
 
                 $class = 'Dragon\\' . $item . '\\' . basename($file, '.php');
+
 
                 /**
                  * @var $object
