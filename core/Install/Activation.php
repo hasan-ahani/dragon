@@ -1,7 +1,6 @@
 <?php
 
 namespace Dragon\Install;
-use Dragon\Helper\Table;
 
 /**
  * @package     : Dragon
@@ -38,12 +37,8 @@ class Activation
         $arr = [
             'user_data'     => "{$prefix}user_data",
             'post_data'     => "{$prefix}post_data",
-            'ticket'        => "{$prefix}ticket",
             'notification'  => "{$prefix}notification",
             'email_queue'   => "{$prefix}email_queue",
-            'order'         => "{$prefix}order",
-            'transaction'   => "{$prefix}transaction",
-            'shopping_cart' => "{$prefix}shopping_cart",
         ];
 
         return (object) $arr;
@@ -89,6 +84,16 @@ class Activation
              KEY `user_id` (`user_id`),
              KEY `phone` (`phone`),
              UNIQUE (user_id)
+            ) $collate ",
+            "
+            CREATE TABLE IF NOT EXISTS `{$tables->email_queue}` (
+             `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+             `email` varvhar(100) DEFAULT NULL ,
+             `content` longtext DEFAULT NULL ,
+             `gander` tinyint(1) DEFAULT NULL ,
+             `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+             `updated_at` datetime NOT NULL,
+             PRIMARY KEY (`ID`),
             ) $collate "
         ];
 

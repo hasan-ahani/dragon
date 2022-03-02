@@ -24,7 +24,7 @@ class Dashboard extends Route
         $this->emptyFrontTemplate('<div id="app"></div>');
     }
 
-    public function redirects()
+    public function redirect()
     {
 
         if (!is_user_logged_in()){
@@ -46,27 +46,26 @@ class Dashboard extends Route
         if (!is_user_logged_in()) return;
 
 
-        $suffix = DRAGON_ASSETS. 'modules/dragon/';
+        $perifix = DRAGON_ASSETS. 'modules/dragon/';
         if (defined('DRAGON_VUE_DEV') && DRAGON_VUE_DEV){
-            $suffix = DRAGON_VUE_DEV;
+            $perifix = DRAGON_VUE_DEV;
         }else{
-            wp_register_style('dragon-dashboard', $suffix. 'css/dashboard.css', array(), dragon()->getVersion());
+            wp_enqueue_style('dragon-dashboard', $perifix. 'css/dashboard.css', array(), dragon()->getVersion());
+            wp_enqueue_style('dragon-dashboard-vendors', $perifix. 'css/chunk-vendors.css', array('dragon-dashboard'), dragon()->getVersion());
+
         }
-        wp_register_script('dragon-dashboard', $suffix. 'js/dashboard.js', array(), dragon()->getVersion(), true);
-        wp_register_script('dragon-dashboard-vendors', $suffix. 'js/chunk-vendors.js', array('dragon-dashboard'), dragon()->getVersion(), true);
-        wp_register_style('dragon-dashboard-vendors', $suffix. 'css/chunk-vendors.css', array('dragon'), dragon()->getVersion());
+        wp_enqueue_script('dragon-dashboard-vendors', $perifix. 'js/chunk-vendors.js', array(), dragon()->getVersion(), true);
+        wp_enqueue_script('dragon-dashboard-common', $perifix. 'js/chunk-common.js', array('dragon-dashboard-vendors'), dragon()->getVersion(), true);
+        wp_enqueue_script('dragon-dashboard', $perifix. 'js/dashboard.js', array('dragon-dashboard-common'), dragon()->getVersion(), true);
 
         wp_localize_script('dragon-dashboard', 'dragon', $this->localize());
-        wp_enqueue_script('dragon-dashboard');
-        wp_enqueue_script('dragon-dashboard-vendors');
-        wp_enqueue_style('dragon-dashboard-vendors');
+
     }
 
     public function localize()
     {
         return [
             'user' => dragon()->user->toArray(),
-            'menu' => dragon()->user,
         ];
     }
 

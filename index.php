@@ -16,6 +16,8 @@ defined('ABSPATH') or exit();
  */
 get_header();
 
+$json = \Dragon\Helper\Modules\JsonSchema::getInstance();
+
 /**
  * Template Footer
  */

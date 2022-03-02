@@ -65,34 +65,39 @@ class User extends Model
     protected $table = 'user_data';
 
 
-    public function __construct($id = 0)
+    public function __construct($id_or_email = 0)
     {
-        if ($id instanceof \WP_User ){
-            $this->__set('user', $id);
-        }
-        if (!$id){
-            $id = get_current_user_id();
+        if ($id_or_email instanceof \WP_User ){
+            $this->__set('user', $id_or_email);
         }
 
-        $user = get_userdata($id);
+        if (is_email($id_or_email)){
+            $user = get_user_by('email', $id_or_email);
+        }elseif(is_numeric($id_or_email)){
+            $user = get_user_by('ID', $id_or_email);
+        }else{
+            $user = get_userdata(get_current_user_id());
+        }
+
         if ($user){
 
-//            $this->__set('user', $user);
-            $user_data = wp_cache_get($id, 'dragon_user_data');
+            $user_data = wp_cache_get($user->ID, 'dragon_user_data');
             if ($user_data){
                 $this->set($user_data);
             }else{
                 $query = $this->query();
-                $query->where('user_id', $id);
+                $query->where('user_id', $user->ID);
                 $user_data = $query->one();
-                wp_cache_set($id, $user_data, 'dragon_user_data');
-                $this->set($user_data);
+                if ($user_data){
+                    wp_cache_set($user->ID, $user_data, 'dragon_user_data');
+                    $this->set($user_data);
+                }
             }
-
             $this->set($user);
 
-
             return $this;
+        }else{
+            return new \WP_Error('user_not_found', __('User Not Found', 'dragon'));
         }
     }
 

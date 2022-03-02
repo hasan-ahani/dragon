@@ -1,0 +1,26 @@
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--#{$variable-prefix}font-family);
+    height: 48px;
+    gap: 8px;
+    background-color: $primary;
+    border:none;
+    color: $light;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: var($var-radius);
+
+    &.sm{
+
+        height: 32px;
+    }
+
+    &.link{
+        background-color: transparent;
+        color: $body-color
+    }
+
+}

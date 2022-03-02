@@ -48,7 +48,7 @@ $theme-colors: (
 
 
 $body-color: $light;
-$variable-prefix: dr-;
+$variable-prefix: dg-;
 
 
 $font-family-base: iranyekanBakh;
@@ -57,3 +57,10 @@ $font-weight-base: 400;
 $line-height-base: 1.5;
 $body-color: $dark;
 $body-bg: $light;
+
+
+
+$var-radius: --#{$variable-prefix}radius;
+$var-font: var(--#{$variable-prefix}body-font-family);
+$var-weight: var(--#{$variable-prefix}body-font-weight);
+$var-line-height: var(--#{$variable-prefix}body-line-height);

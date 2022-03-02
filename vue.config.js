@@ -3,12 +3,6 @@ const path = require("path");
 
 module.exports = {
     pages: {
-        index: {
-            entry: './src/app/system/main.js',
-            template: 'public/index.html',
-            title: 'Design System',
-            chunks: [ 'chunk-vendors', 'chunk-common', 'system'],
-        },
         auth: {
             entry: './src/app/auth/main.js',
             template: 'public/index.html',
@@ -20,12 +14,6 @@ module.exports = {
             template: 'public/index.html',
             title: 'User Dashboard Panel',
             chunks: [ 'chunk-vendors', 'chunk-common', 'dashboard'],
-        },
-        admin: {
-            entry: './src/app/admin/main.js',
-            template: 'public/index.html',
-            title: 'Admin Panel',
-            chunks: [ 'chunk-vendors', 'chunk-common', 'admin'],
         }
     },
     outputDir: path.resolve(__dirname, "assets/modules/dragon"),

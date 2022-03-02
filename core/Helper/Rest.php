@@ -164,7 +164,7 @@ abstract class Rest extends \WP_REST_Request
 
     public function permission()
     {
-        return is_user_logged_in();
+        return dragon()->isDev() || is_user_logged_in();
     }
 
     /**
@@ -239,5 +239,10 @@ abstract class Rest extends \WP_REST_Request
     public function canAccess($cap)
     {
         return is_user_logged_in() && current_user_can($cap);
+    }
+
+    public function getField($name, $default = false)
+    {
+        return isset($_REQUEST[$name]) ? $name : $default;
     }
 }

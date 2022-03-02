@@ -36,3 +36,15 @@ if (!function_exists('dg_get_user')){
         return \Dragon\Model\User::getInstance($user_id);
     }
 }
+
+
+if (!function_exists('dg_time')){
+
+    /**
+     * @return string
+     */
+    function dg_time()
+    {
+        return current_time('mysql');
+    }
+}

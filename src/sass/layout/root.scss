@@ -12,10 +12,12 @@
 
   --#{$variable-prefix}body-font-family: #{$font-family-base};
   --#{$variable-prefix}body-font-weight: #{$font-weight-size};
-  --#{$variable-prefix}body-font-weight: #{$font-weight-base};
   --#{$variable-prefix}body-line-height: #{$line-height-base};
   --#{$variable-prefix}body-text-align: right;
   --#{$variable-prefix}body-color: #{$body-color};
   --#{$variable-prefix}body-bg: #{$body-bg};
+  --#{$variable-prefix}radius: 0.6rem;
+  --#{$variable-prefix}shadow-lg: 0px 2px 61px 0px rgba(51, 65, 85, 0.05);
+
 
 }

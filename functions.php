@@ -10,6 +10,7 @@
 defined('ABSPATH') or exit();
 
 
+define('DRAGON_VUE_DEV', 'http://localhost:7300/');
 /**
  * define dragon const
  */

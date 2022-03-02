@@ -1,0 +1,7 @@
+.#{$variable-prefix}card{
+    background-color: white;
+    padding: 1rem;
+    border-radius: var(--#{$variable-prefix}radius);
+    width: 100%
+
+}
