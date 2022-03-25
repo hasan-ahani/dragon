@@ -84,7 +84,9 @@
     "jquery": "^3.6.0",
     "notyf": "^3.10.0",
     "vue": "^2.6.11",
+    "vue-form-generator": "^2.3.4",
     "vue-form-json-schema": "^2.9.5",
+    "vue-my-toasts": "^1.0.1",
     "vue-persian-datetime-picker": "^2.10.3",
     "vue-router": "^3.5.3",
     "vue-toastification": "^1.7.11"

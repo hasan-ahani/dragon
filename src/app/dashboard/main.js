@@ -80,8 +80,9 @@ Vue.mixin({
     }
 })
 
-import dgInput from './../components/fields/dg-input.vue';
-Vue.component(dgInput);
+import VueFormGenerator from 'vue-form-generator'
+Vue.use(VueFormGenerator)
+
 Vue.config.productionTip = false;
 new Vue({
     router,

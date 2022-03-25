@@ -62,12 +62,14 @@ class Auth extends \Dragon\Helper\Route
         wp_register_script('dragon-auth-vendors', $suffix. 'js/chunk-vendors.js', array(), dragon()->getVersion(), true);
         wp_register_script('dragon-auth-common', $suffix. 'js/chunk-common.js', array('dragon-auth-vendors'), dragon()->getVersion(), true);
         wp_register_style('dragon-auth-vendors', $suffix. 'css/chunk-vendors.css', array('dragon'), dragon()->getVersion());
+        wp_register_style('dragon-auth-common', $suffix. 'css/chunk-common.css', array('dragon'), dragon()->getVersion());
 
         wp_localize_script('dragon-auth', 'dragon', $this->localize());
         wp_enqueue_script('dragon-auth');
         wp_enqueue_script('dragon-auth-common');
         wp_enqueue_script('dragon-auth-vendors');
         wp_enqueue_style('dragon-auth-vendors');
+        wp_enqueue_style('dragon-auth-common');
     }
 
 

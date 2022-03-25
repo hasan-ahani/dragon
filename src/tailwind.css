@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @import url(fonts.css);
+@import url(form.css);
 @import url(fonts/dragon/dragon.css);
 html{
     @apply font-body;
@@ -41,16 +42,16 @@ input {
 ::-webkit-scrollbar {
     @apply w-1.5 ;
 }
-  
+
 /* Track */
 ::-webkit-scrollbar-track {
 }
-   
+
   /* Handle */
   ::-webkit-scrollbar-thumb {
     @apply rounded-lg bg-gray-700 transition cursor-pointer;
   }
-  
+
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     @apply rounded-lg bg-primary-900;

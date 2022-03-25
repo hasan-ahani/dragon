@@ -1,0 +1,18 @@
+
+.vue-form-generator{
+    @apply p-1;
+}
+.vue-form-generator legend{
+    @apply flex w-full p-2 font-bold;
+}
+.vue-form-generator .form-group{
+    @apply flex py-6 items-center px-4;
+}
+.vue-form-generator .form-group:nth-child(even){
+
+    @apply bg-gray-100 bg-opacity-50;
+}
+
+.vue-form-generator .form-group >label{
+    @apply w-3/12;
+}

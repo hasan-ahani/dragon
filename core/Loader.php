@@ -98,6 +98,7 @@ class Loader extends Dragon
     private function restInit()
     {
 
+
         $classes = glob(DRAGON_CORE . 'Rest/*/*.php');
 
         foreach ($classes as $file)

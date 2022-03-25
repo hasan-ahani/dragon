@@ -107,11 +107,11 @@ export default {
             this.$request.post('auth/login', this.utils.getFormData(e.target))
                 .then(res => {
                     console.log(res)
-                    this.$notif.success(res.data.message)
+                    this.$toasts.success(res.data.message)
                 })
                 .catch((err) => {
                     if (err.response){
-                        this.$notif.error(err.response.data)
+                        this.$toasts.error(err.response.data.message)
                     }
 
                 })

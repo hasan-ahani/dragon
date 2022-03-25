@@ -1,0 +1,9 @@
+{
+  "name": "EmailSystem",
+  "version": "1.0.0",
+  "author": "wptool",
+  "author_url": "wptool.co",
+  "index": [
+    "setup.php"
+  ]
+}

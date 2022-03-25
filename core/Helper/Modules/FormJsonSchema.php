@@ -31,10 +31,10 @@ class FormJsonSchema
     }
 
 
-    public function addInput($name)
-    {
-
-    }
+//    public function addInput($name,)
+//    {
+//        $this->data['properties'][$name]
+//    }
 
 
 }

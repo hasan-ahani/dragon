@@ -3,41 +3,17 @@ import Auth from './Auth.vue'
 import VueRouter from "vue-router";
 import './../../tailwind.css';
 
-import { Notyf } from 'notyf';
-import 'notyf/notyf.min.css'; // for React, Vue and Svelte
+import VueMyToasts from 'vue-my-toasts'
+import Toast from "../components/module/Toast";
 
-// Create an instance of Notyf
-Vue.prototype.$notif = new Notyf({
-    duration: 4000,
-    position: {
-        x: 'center',
-        y: 'top',
+Vue.use(VueMyToasts, {
+    component: Toast,
+    options: {
+        width: '400px',
+        position: 'top-middle',
+        padding: '1rem',
     },
-    dismissible: true,
-    types: [
-        {
-            type: 'warning',
-            background: '#FCD34D',
-            icon: {
-                className: 'material-icons',
-                tagName: 'i',
-                text: 'warning'
-            }
-        },
-        {
-            type: 'error',
-            background: '#E81C4D'
-        },
-        {
-            type: 'success',
-            background: '#22C55E'
-        },
-        {
-            type: 'info',
-            background: '#3595F6',
-        }
-    ]
-});
+})
 
 // axios
 let opts = {
